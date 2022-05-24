@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 
 public class BaseClass {
@@ -32,6 +33,11 @@ public class BaseClass {
         }else if(browserName.equalsIgnoreCase("IE")){
             WebDriverManager.iedriver().setup();
         }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+
+        driver.get(properties.getProperty("url"));
 
 
 
