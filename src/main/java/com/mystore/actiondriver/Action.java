@@ -733,4 +733,6 @@ public class Action extends BaseClass implements actionInterface{
         return currentDate;
     }
 
+    public void click(WebElement check_out_btn) {
+    }
 }

@@ -1,4 +1,25 @@
 package com.mystore.pageobjects;
 
-public class PaymentPage {
+import com.mystore.actiondriver.Action;
+import com.mystore.base.BaseClass;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.devtools.v85.page.Page;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class PaymentPage extends BaseClass {
+    Action action = new Action();
+
+    public PaymentPage() {
+        PageFactory.initElements(driver,this);
+    }
+    @FindBy(xpath = "//a[contains(text(),'Pay by bank wire')]")
+    private WebElement bankWireMethod;
+    @FindBy(xpath = "//a[contains(text(),'Pay by check')]")
+    private WebElement payByCheckMethod;
+
+    public OrderSummaryPage clickOnPaymentMethod(){
+        action.click(driver, bankWireMethod);
+        return new OrderSummaryPage();
+    }
 }
